@@ -1,5 +1,5 @@
 import React from 'react';
-import './Movies.css';
+import './Details.css';
 import { Card } from 'react-bootstrap';
 
 function Details(props) {
@@ -10,11 +10,11 @@ function Details(props) {
           <Card style={{ width: '18rem' }}>
             <Card.Img variant="top" src={movie.Poster} />
             <Card.Body>
-              <Card.Title>{movie.Title}</Card.Title>
-              <Card.Text>{movie.Genre}</Card.Text>
-              <Card.Text>{movie.Director}</Card.Text>
-              <Card.Text>{movie.Runtime} </Card.Text>
-              <Card.Text>{movie.Released}</Card.Text>
+              <Card.Title><strong>{movie.Title}</strong></Card.Title>
+              <Card.Text><strong>Genre:</strong> {movie.Genre}</Card.Text>
+              <Card.Text><strong>Director:</strong> {movie.Director}</Card.Text>
+              <Card.Text><strong>Runtime:</strong> {movie.Runtime} </Card.Text>
+              <Card.Text><strong>Release Date:</strong> {movie.Released}</Card.Text>
             </Card.Body>
           </Card>)
       })}
