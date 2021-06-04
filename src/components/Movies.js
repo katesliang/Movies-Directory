@@ -4,7 +4,7 @@ import { Card } from 'react-bootstrap';
 
 function Movies(props) {
     return (
-        <div>
+        <div class = "movies">
             {props.movies.map(movie => {
                 return (
                     <Card onClick={(e) => props.handleClick(e, movie.imdbID)} style={{ width: '18rem' }}>

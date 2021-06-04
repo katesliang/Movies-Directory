@@ -50,7 +50,7 @@ function SearchInfo() {
     }
 
     return (
-        <div className="movieinfo">
+        <div className="searchInfo">
             <form id="search" onSubmit={(e) => (handleSubmit(e, page))}>
                 <label htmlFor="queryInput">Search Movie Name:</label>
                 <input
@@ -60,6 +60,7 @@ function SearchInfo() {
                     onChange={e => setQuery(e.target.value)} />
                 <button className="search">Submit</button>
             </form>
+            {showPagination ? <MPagination page={page} handleSubmit={handleSubmit}></MPagination> : <></>}
             {showMovies ? <Movies movies={movies} handleClick={handleClick}></Movies> : <></>}
             {showDetails ? <Details details={details}></Details> : <></>}
             {showPagination ? <MPagination page={page} handleSubmit={handleSubmit}></MPagination> : <></>}
