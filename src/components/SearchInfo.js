@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './SearchInfo.css';
 import Movies from './Movies';
-import MPagination from './Pagination';
+import Pages from './Pagination';
 import Details from './Details.js';
 
 function SearchInfo() {
@@ -38,7 +38,7 @@ function SearchInfo() {
             const apiUrl = `https://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}&type=movie&s=${searchParam}&page=${pageParam}&r=json`;
             console.log(apiUrl);
             let response = await fetch(apiUrl);
-            response = await response.json();
+            response = await response.json(); 
             console.log(response.Search);
             setMovies(response.Search);
         }
@@ -60,10 +60,10 @@ function SearchInfo() {
                     onChange={e => setQuery(e.target.value)} />
                 <button className="search">Submit</button>
             </form>
-            {showPagination ? <MPagination page={page} handleSubmit={handleSubmit}></MPagination> : <></>}
+            {showPagination ? <Pages page={page} response={movies} handleSubmit={handleSubmit}></Pages> : <></>}
             {showMovies ? <Movies movies={movies} handleClick={handleClick}></Movies> : <></>}
             {showDetails ? <Details details={details}></Details> : <></>}
-            {showPagination ? <MPagination page={page} handleSubmit={handleSubmit}></MPagination> : <></>}
+            {showPagination ? <Pages page={page} response={movies} handleSubmit={handleSubmit}></Pages> : <></>}
         </div>
     )
 }

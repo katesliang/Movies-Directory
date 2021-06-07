@@ -2,18 +2,24 @@ import React from "react";
 import './Pagination.css';
 import { Pagination } from "react-bootstrap";
 
-function MPagination(props) {
-  function adjustPage(amount){
+function Pages(props) {
+  let hasNextPage = true;
+
+  function adjustPage(amount) {
     return props.page + amount;
   };
 
+  if(props.response.length < 10){
+    hasNextPage = false;
+  }
+
   return (
-    <Pagination class = "pagination">
+    <Pagination class="pagination">
       {props.page > 1 && <Pagination.Prev onClick={(e) => props.handleSubmit(e, adjustPage(-1))} />}
       {<Pagination.Item>{props.page}</Pagination.Item>}
-      {<Pagination.Next onClick={(e) => props.handleSubmit(e, adjustPage(1))} />}
+      {hasNextPage && <Pagination.Next onClick={(e) => props.handleSubmit(e, adjustPage(1))} />}
     </Pagination>
   );
 }
 
-export default MPagination;
+export default Pages;
