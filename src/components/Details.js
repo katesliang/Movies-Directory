@@ -6,6 +6,11 @@ function Details(props) {
   return (
     <div>
       {props.details.map(movie => {
+        if (movie.Poster === "N/A") {
+          movie.Poster = "https://westsiderc.org/wp-content/uploads/2019/08/Image-Not-Available.png";
+          console.log(movie.Poster);
+        }
+
         return (
           <Card style={{ width: '18rem' }}>
             <Card.Img variant="top" src={movie.Poster} />
